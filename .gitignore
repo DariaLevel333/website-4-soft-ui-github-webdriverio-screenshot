@@ -1,0 +1,9 @@
+.idea
+/node_modules
+/test-results/
+/uw-a11y-reports
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+output.log
+level-ci-reports
