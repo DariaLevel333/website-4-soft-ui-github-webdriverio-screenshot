@@ -1,5 +1,4 @@
 name: Level CI Analysis
-
 on:
   pull_request:
     branches:
@@ -10,7 +9,6 @@ on:
       - develop
       - "release/**"
       - "hotfix/**"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,8 +25,7 @@ jobs:
           CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
 
       - name: Run WebdriverIO tests
-        run: |
-          npm run wdio
+        run: npm run wdio
 
       - name: Level CI Accessibility Analysis
         uses: levelaccess/level-ci@dev
@@ -37,3 +34,4 @@ jobs:
         with:
           token: ${{ secrets.LEVEL_CI_TOKEN }}
           report_paths: './level-ci-reports'
+
