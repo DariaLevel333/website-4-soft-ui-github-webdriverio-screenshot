@@ -1,27 +1,43 @@
 name: Node.js CI
+
 on:
   pull_request:
     branches: ['main']
   push:
     branches: ['main']
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [18.x]
+
     timeout-minutes: 15
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Install npm packages
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install npm packages and start app
         run: |
-          npm install
+          npm install --legacy-peer-deps
           nohup npm run dev > output.log 2>&1 &
           sleep 5
           curl -I http://localhost:1342/
-      - name: Run Cypress tests
+
+      - name: Run WebdriverIO tests
         run: |
-          npm run test:cypress
+          npm run wdio
+
+      #- name: Run Cypress tests
+      #  run: |
+      #    npm run test:cypress
       # - name: Run Playwright tests
       #   run: |
       #     npx playwright install chromium

@@ -23,7 +23,8 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@level-ci/a11y-webdriverio": "^0.2.2-preview-20260421100914",
-    "@level-ci/cli": "^0.1.17-alpha.3025"
+    "@level-ci/a11y-cypress": "^0.2.2-alpha-20260507150808",
+    "@level-ci/a11y-webdriverio": "^0.2.2-alpha-20260513113430",
+    "@level-ci/cli": "^0.1.17-alpha.3065"
   }
 }
