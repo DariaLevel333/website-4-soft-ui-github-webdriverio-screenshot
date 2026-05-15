@@ -51,7 +51,7 @@ jobs:
         run: npm run wdio
 
       - name: Level CI Accessibility Analysis
-        uses: levelaccess/level-ci@v1
+        uses: levelaccess/level-ci@dev
         env:
           LEVEL_CI_TOKEN: ${{ secrets.LEVEL_CI_TOKEN }}
         with:
