@@ -23,6 +23,19 @@ jobs:
         run: npm ci --legacy-peer-deps
         env:
           CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
+	
+      - name: Start app and wait for port 1342
+        run: |
+          nohup npm run dev > output.log 2>&1 &
+          for i in {1..30}; do
+            if curl -sf http://127.0.0.1:1342/ > /dev/null; then
+              echo "App is up"
+              break
+            fi
+            echo "Waiting for app..."
+            sleep 2
+          done
+          curl -I http://127.0.0.1:1342/
 
       - name: Run WebdriverIO tests
         run: npm run wdio
@@ -34,4 +47,10 @@ jobs:
         with:
           token: ${{ secrets.LEVEL_CI_TOKEN }}
           report_paths: './level-ci-reports'
-
+	
+      - name: Upload app log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-log
+          path: output.log
