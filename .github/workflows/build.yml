@@ -25,7 +25,7 @@ jobs:
           CLOUDSMITH_TOKEN: ${{ secrets.CLOUDSMITH_TOKEN }}
 
       - name: Run WebdriverIO tests
-        run: npm run wdio
+        run: npm run wdio --force
 
       - name: Level CI Accessibility Analysis
         uses: levelaccess/level-ci@dev
