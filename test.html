@@ -1,0 +1,44 @@
+<div>
+
+  <!-- Element 1 -->
+  <button 
+    data-testid="submit-btn"
+    data-qa="submit-button"
+    id="btn-123"
+    class="btn primary css-abc123"
+  >
+    Submit
+  </button>
+
+  <!-- Element 2 -->
+  <button 
+    data-testid="cancel-btn"
+    data-qa="cancel-button"
+    id="btn-456"
+    class="btn secondary css-xyz999"
+  >
+    Cancel
+  </button>
+
+  <!-- Element 3 (important edge case later) -->
+  <button 
+    data-testid="shared-btn"
+    data-qa="delete-button"
+    id="btn-789"
+    class="btn danger css-qwe111"
+  >
+    Delete
+  </button>
+
+  <!-- Element 4 (duplicate data-testid!) -->
+  <button 
+    data-testid="shared-btn"
+    data-qa="archive-button"
+    id="btn-999"
+    class="btn archive css-rty222"
+  >
+    Archive
+  </button>
+
+</div>
+``

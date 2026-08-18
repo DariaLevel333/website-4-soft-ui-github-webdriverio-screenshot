@@ -13,7 +13,9 @@ describe('Home page', () => {
     await expect(targetEl).toHaveText('Soft UI Dashboard')
 
     await levelAnalyze(browser, {
-      experimental: { elementScreenshots: true, stableSelectorAttributes: ['data-testid'] }
+//      experimental: { elementScreenshots: true, stableSelectorAttributes: ['data-testid'] }
+      experimental: { elementScreenshots: true, cssSelector: {stableAttributes: ['data-testid', 'data-qa', 'id']} }
     })
   })
 })
+
